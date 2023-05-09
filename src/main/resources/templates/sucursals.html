@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http:///www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sucursal Management System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+          crossorigin="anonymous">
+
+
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Sucursals' Control</a>
+        <div class="collapse navbar-collapse" id="collapsebleNavar">
+            <ul class="navbar-nav">
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container" align="center">
+        <br>
+        <div class="row" align="center">
+            <h1>Sucursal List</h1>
+        </div>
+        <br>
+        <table class="table table-success table-striped">
+            <tr align="center">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Country</th>
+                <th>EU / Not EU</th>
+                <th>Actions</th>
+            </tr>
+            <tbody>
+                <tr th:each="cosa : ${listSucursal}" align="center">
+                    <td th:text="${cosa.id}"></td>
+                    <td th:text="${cosa.name}"></td>
+                    <td th:text="${cosa.country}"></td>
+                    <td th:text="${cosa.typeSucursal}"></td>
+                    <td>
+                        <a th:href="@{/sucursals/updateOne/{id}(id=${cosa.id})}" class="btn btn-outline-info">Edit</a>
+                        <a th:href="@{/sucursals/deleteOne/{id}(id=${cosa.id})}" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <div align="right">
+            <div class="col-lg-3">
+                <a th:href="@{/sucursals/newSucursal}" class="btn btn-outline-warning">Add new Sucursal</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
